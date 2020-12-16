@@ -1,43 +1,33 @@
 package com.hemebiotech.analytics;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AnalyticsCounter {
-	private static int headacheCount = 0;	// initialize to 0
-	private static int rashCount = 0;		// initialize to 0
-	private static int pupilCount = 0;		// initialize to 0
-	
-	public static void main(String args[]) throws Exception {
-		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
-		String line = reader.readLine();
 
-		int i = 0;	// set i to 0
-		int headCount = 0;	// counts headaches
-		while (line != null) {
-			i++;	// increment i
-			System.out.println("symptom from file: " + line);
-			if (line.equals("headache")) {
-				headCount++;
-				System.out.println("number of headaches: " + headCount);
-			}
-			else if (line.equals("rush")) {
-				rashCount++;
-			}
-			else if (line.contains("pupils")) {
-				pupilCount++;
-			}
+    /**
+     * Read the symptoms.txt file with the Read SymptomDataFromFile class
+     * Sort with the SortSymptom class
+     * Count with the CountSymptom class
+     * Write the result.out file with the WriteSymptomDataFile class
+     *
+     * @return result.out
+     * @version 1.0
+     * @author Eric
+     */
 
-			line = reader.readLine();	// get another symptom
-		}
-		
-		// next generate output
-		FileWriter writer = new FileWriter ("result.out");
-		writer.write("headache: " + headacheCount + "\n");
-		writer.write("rash: " + rashCount + "\n");
-		writer.write("dialated pupils: " + pupilCount + "\n");
-		writer.close();
-	}
+    public static void main(String[] args) {
+
+
+        ArrayList<String> resultListDataFile = new ReadSymptomDataFromFile().readSymptoms("symptoms.txt"); // Read File symptoms.txt and return ArrayList
+
+        resultListDataFile = new SortSymptom().symptomSort(resultListDataFile); // Read ArrayList resultListDataFile return ArrayList
+
+        HashMap<String, Integer> map = new CountSymptom().symptomCount(resultListDataFile); // Read ArrayList return HashMap
+
+        new WriteSymptomDataFile().symptomWriteDataFile(map, "result.out"); // Read Map and Write file result.out
+
+    }
+
 }
+
