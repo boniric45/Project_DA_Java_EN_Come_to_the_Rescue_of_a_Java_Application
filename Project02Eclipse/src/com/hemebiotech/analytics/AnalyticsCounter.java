@@ -1,40 +1,35 @@
-/*
- * AnalyticsCounter class
- *
- * Description :
- *
- * Version : 1.0
- *
- * Date : 10/12/2020
- *
- * Copyright : Eric Boniface
- *
- */
-
-
 package com.hemebiotech.analytics;
 
 public class AnalyticsCounter {
 
-    public static void main(String args[]) throws Exception {
-/*
-        ReadSymptomDataFromFile.Getsymptoms(); //lance la lecture
-        ISymptomReader.GetSymptoms();//lit la liste, la tri et la compte
-        WriteSymptomDataFile.FileWriterResult(); //lit la liste et enregistre le fichier de sortie
-*/
-        //lit
+    /**
+     * Read the symptoms.txt file with the Read Symptom Data FromFile class
+     * Sort with the SortSymptom class
+     * Count with the CountSymptom class
+     * Write the result.out file with the WriteSymptomDataFile class
+     *
+     * @return result.out
+     * @version 1.0
+     * @author Eric
+     */
 
+    public static void main(String[] args) throws Exception {
 
+        //Read Data File
         ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile();
         readSymptomDataFromFile.readSymptoms();
 
-        //Tri
-        SortSymptoms sortSymptoms = new SortSymptoms();
-        sortSymptoms.sortSymptoms();
+        //Sort Data File
+        SortSymptom sortSymptoms = new SortSymptom();
+        sortSymptoms.symptomSort();
 
-        //Write
-      //  WriteSymptomDataFile writeSymptomDataFile = new WriteSymptomDataFile();
-        //writeSymptomDataFile.writeSymptoms();
+        //Count Data File
+        CountSymptom countSymptom = new CountSymptom();
+        countSymptom.symptomCount();
+
+        //Write Data File
+        WriteSymptomDataFile writeSymptomDataFile = new WriteSymptomDataFile();
+        writeSymptomDataFile.symptomWriteDataFile();
 
     }
 
