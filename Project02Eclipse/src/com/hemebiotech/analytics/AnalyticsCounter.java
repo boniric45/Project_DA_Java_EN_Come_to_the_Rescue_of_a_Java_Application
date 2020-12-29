@@ -1,9 +1,11 @@
 package com.hemebiotech.analytics;
 
+import java.util.ArrayList;
+
 public class AnalyticsCounter {
 
     /**
-     * Read the symptoms.txt file with the Read Symptom Data FromFile class
+     * Read the symptoms.txt file with the Read SymptomDataFromFile class
      * Sort with the SortSymptom class
      * Count with the CountSymptom class
      * Write the result.out file with the WriteSymptomDataFile class
@@ -13,23 +15,15 @@ public class AnalyticsCounter {
      * @author Eric
      */
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
-        //Read Data File
-        ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile();
-        readSymptomDataFromFile.readSymptoms();
+        ArrayList<String> resultListDataFile = new ReadSymptomDataFromFile().readSymptoms(); // Read File symptoms.txt return ArrayList
 
-        //Sort Data File
-        SortSymptom sortSymptoms = new SortSymptom();
-        sortSymptoms.symptomSort();
+        ArrayList<String> resultListSort = new SortSymptom().symptomSort(resultListDataFile); // Read ArrayList resultListDataFile return ArrayList resultListSort
 
-        //Count Data File
-        CountSymptom countSymptom = new CountSymptom();
-        countSymptom.symptomCount();
+        ArrayList<String> resultListCount = new CountSymptom().symptomCount(resultListSort); // Read ArrayList resultListSort return ArrayList resultListCount
 
-        //Write Data File
-        WriteSymptomDataFile writeSymptomDataFile = new WriteSymptomDataFile();
-        writeSymptomDataFile.symptomWriteDataFile();
+        new WriteSymptomDataFile().symptomWriteDataFile(resultListCount); // Read ArrayList resultListCount and Write file result.out
 
     }
 

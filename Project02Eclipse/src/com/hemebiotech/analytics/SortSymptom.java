@@ -2,25 +2,22 @@ package com.hemebiotech.analytics;
 
 import java.util.*;
 
-public class SortSymptom extends ReadSymptomDataFromFile implements ISymptomSort {
+public class SortSymptom implements ISymptomSort {
 
     /**
      * Sort sortSymptomList from readSymptoms() and listed in alphabetical order
      *
-     * @return sortSymptomList
+     * @return  ArrayList resultListDataFile
      * @version 1.0
      * @author Eric
      */
 
-    public Collection<String> symptomSort() {
-
-        //created a ArrayList with resultListDataFile from ReadSymptomDataFromFile class
-        ArrayList<String> sortSymptomList = readSymptoms();
+    public ArrayList<String> symptomSort(ArrayList <String> resultListDataFile) {
 
         //listed in alphabetical order
-        Collections.sort(sortSymptomList);
+        Collections.sort(resultListDataFile);
 
-        return sortSymptomList;
+        return resultListDataFile;
     }
 
 }

@@ -1,15 +1,9 @@
 package com.hemebiotech.analytics;
 
+import java.util.ArrayList;
+
 public interface ISymptomWrite {
 
-    /**
-     * Write result.out from WriteSymptomDataFile
-     *
-     * @return countSymptomList
-     * @version 1.0
-     * @author Eric
-     */
-
-    void symptomWriteDataFile();
+    void symptomWriteDataFile(ArrayList<String> resultListCount);
 
 }

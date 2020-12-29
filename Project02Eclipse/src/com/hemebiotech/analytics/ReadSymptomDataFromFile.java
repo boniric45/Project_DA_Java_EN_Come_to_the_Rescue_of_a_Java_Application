@@ -8,10 +8,9 @@ import java.util.ArrayList;
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
     /**
-     *
      * Read the symptoms.txt file with the ReadSymptomDataFromFile class
      *
-     * @return resultListDataFile
+     * @return ArrayList resultListDataFile
      * @version 1.0
      * @author Eric
      */
@@ -21,12 +20,9 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 
         ArrayList<String> resultListDataFile = new ArrayList<>();
 
-        // file path
-        String filepath = "symptoms.txt";
-
         try {
 
-            BufferedReader reader = new BufferedReader(new FileReader(filepath));
+            BufferedReader reader = new BufferedReader(new FileReader("symptoms.txt"));
             String line = reader.readLine();
             while (line != null) {
                 resultListDataFile.add(line);

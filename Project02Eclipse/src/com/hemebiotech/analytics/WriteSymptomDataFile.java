@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class WriteSymptomDataFile extends CountSymptom implements ISymptomWrite {
+public class WriteSymptomDataFile implements ISymptomWrite {
 
     /**
      * Write the result.out file
@@ -15,10 +15,7 @@ public class WriteSymptomDataFile extends CountSymptom implements ISymptomWrite 
      */
 
     @Override
-    public void symptomWriteDataFile() {
-
-        //created a ArrayList with symptomCount() from CountSymptom class
-        ArrayList<String> sortSymptoms = symptomCount();
+    public void symptomWriteDataFile(ArrayList<String> resultListCount) {
 
         //	Creating and saving the result.out file
         FileWriter writer;
@@ -27,7 +24,7 @@ public class WriteSymptomDataFile extends CountSymptom implements ISymptomWrite 
 
             writer = new FileWriter("result.out");
 
-            for (String rowListRelease : sortSymptoms) {
+            for (String rowListRelease : resultListCount) {
 
                 // display of the final list in console
                 System.out.println(rowListRelease);

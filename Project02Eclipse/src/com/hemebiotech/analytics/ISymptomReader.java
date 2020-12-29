@@ -1,18 +1,10 @@
- package com.hemebiotech.analytics;
+package com.hemebiotech.analytics;
 
- import java.util.ArrayList;
+import java.util.ArrayList;
 
- public interface ISymptomReader {
-
-     /**
-      * readSymptoms from the ReadSymptomDataFromFile class
-      *
-      * @version 1.0
-      * @author Eric
-      *
-      */
+public interface ISymptomReader {
 
     ArrayList<String> readSymptoms();
 
- }
+}
 
