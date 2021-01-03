@@ -17,6 +17,8 @@ public class AnalyticsCounter {
 
     public static void main(String[] args) {
 
+        // TODO : optimiser le code en utilisant moins de variable.
+
         ArrayList<String> resultListDataFile = new ReadSymptomDataFromFile().readSymptoms(); // Read File symptoms.txt return ArrayList
 
         ArrayList<String> resultListSort = new SortSymptom().symptomSort(resultListDataFile); // Read ArrayList resultListDataFile return ArrayList resultListSort

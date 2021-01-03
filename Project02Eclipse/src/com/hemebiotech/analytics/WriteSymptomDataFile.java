@@ -15,7 +15,7 @@ public class WriteSymptomDataFile implements ISymptomWrite {
      */
 
     @Override
-    public void symptomWriteDataFile(ArrayList<String> resultListCount) {
+    public void symptomWriteDataFile(ArrayList<String> resultListCount) { // TODO : rendre parametrable le nom du fichier de sortie.
 
         //	Creating and saving the result.out file
         FileWriter writer;
@@ -34,7 +34,7 @@ public class WriteSymptomDataFile implements ISymptomWrite {
 
             }
 
-            writer.close();
+            writer.close(); // TODO : utiliser un try-with-resources
 
         } catch (IOException e) {
 

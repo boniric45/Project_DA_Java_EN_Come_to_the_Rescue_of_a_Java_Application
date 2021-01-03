@@ -16,27 +16,34 @@ public class CountSymptom implements ISymptomCount {
      */
 
     @Override
-    public ArrayList<String> symptomCount(ArrayList<String> resultListSort) {
+    public ArrayList<String> symptomCount(ArrayList<String> resultListSort) { // TODO : methode va retourner une map
 
         //Create new Objet Collection countlist
-        Collection<String> countList = new HashSet<>(resultListSort);
+        Collection<String> countList = new HashSet<>(resultListSort); // TODO : remove
+        // TODO : Creation d'une map <String, Integer>
 
         for (String symptom : resultListSort) {
 
+            // TODO : faire une condition si le symptom est present dans la map
+
+                // TODO : cas ou le symptome est deja present - on augmente le compteur.
+
+                // TODO : cas ou le symptome n'est pas present - on ajoute le symptome avec un compteur egal a 1
+
             // count the number of symptoms
-            int symptomCount = Collections.frequency(resultListSort, symptom);
+            int symptomCount = Collections.frequency(resultListSort, symptom); // TODO : remove
 
             // adds the symptom with its number in the countList collection
-            countList.add(symptom + " : " + symptomCount);
-            countList.remove(symptom);
+            countList.add(symptom + " : " + symptomCount); // TODO : remove
+            countList.remove(symptom); // TODO : remove
 
         }
 
         // ArrayList creation from Collection countList
-        ArrayList<String> countSymptomList = new ArrayList<String>(countList);
+        ArrayList<String> countSymptomList = new ArrayList<String>(countList); // TODO : remove
 
         //sort the list alphabetically
-        Collections.sort(countSymptomList);
+        Collections.sort(countSymptomList); // TODO : remove
 
         return countSymptomList;
     }

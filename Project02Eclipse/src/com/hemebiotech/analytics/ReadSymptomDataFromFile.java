@@ -22,14 +22,14 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 
         try {
 
-            BufferedReader reader = new BufferedReader(new FileReader("symptoms.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("symptoms.txt")); // TODO : rendre parametrable le nom du fichier d'entree.
             String line = reader.readLine();
             while (line != null) {
                 resultListDataFile.add(line);
                 line = reader.readLine();
             }
 
-            reader.close();
+            reader.close(); // TODO : utiliser un try-with-resources
 
         } catch (IOException e) {
             e.printStackTrace();
