@@ -2,44 +2,35 @@ package com.hemebiotech.analytics;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WriteSymptomDataFile implements ISymptomWrite {
 
     /**
-     * Write the result.out file
+     * Write the file specified in AnalysticsCounter
      *
-     * @return result.out file
+     * @return file define Analytics
      * @version 1.0
      * @author Eric
      */
 
     @Override
-    public void symptomWriteDataFile(ArrayList<String> resultListCount) { // TODO : rendre parametrable le nom du fichier de sortie.
+    public void symptomWriteDataFile(HashMap<String, Integer> resultMapCount, String fileOut) {
 
-        //	Creating and saving the result.out file
-        FileWriter writer;
+        /* try-with-resources Auto Close*/
+        try (FileWriter writer = new FileWriter(fileOut)) {
 
-        try {
+            for (Map.Entry<String, Integer> map : resultMapCount.entrySet()) {
 
-            writer = new FileWriter("result.out");
-
-            for (String rowListRelease : resultListCount) {
-
-                // display of the final list in console
-                System.out.println(rowListRelease);
-
-                // recording the symptoms in the result.out file from the list
-                writer.write(rowListRelease + "\r\n");
-
+                // recording the symptoms in the file specified in AnalysticsCounter from the Map
+                writer.write(map.getKey() + " : " + map.getValue() + "\r\n");
             }
-
-            writer.close(); // TODO : utiliser un try-with-resources
 
         } catch (IOException e) {
 
             e.printStackTrace();
-            System.out.println("Error : " + e);
+
         }
 
     }

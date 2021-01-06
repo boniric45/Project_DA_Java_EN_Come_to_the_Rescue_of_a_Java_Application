@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
     /**
-     * Read the symptoms.txt file with the ReadSymptomDataFromFile class
+     * reads the file specified in AnalyticsCounter
      *
      * @return ArrayList resultListDataFile
      * @version 1.0
@@ -16,20 +16,18 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
      */
 
     @Override
-    public ArrayList<String> readSymptoms() {
+    public ArrayList<String> readSymptoms(String filePath) {
 
         ArrayList<String> resultListDataFile = new ArrayList<>();
 
-        try {
+        /* try-with-resources Auto Close*/
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
 
-            BufferedReader reader = new BufferedReader(new FileReader("symptoms.txt")); // TODO : rendre parametrable le nom du fichier d'entree.
-            String line = reader.readLine();
+            String line = bufferedReader.readLine();
             while (line != null) {
                 resultListDataFile.add(line);
-                line = reader.readLine();
+                line = bufferedReader.readLine();
             }
-
-            reader.close(); // TODO : utiliser un try-with-resources
 
         } catch (IOException e) {
             e.printStackTrace();

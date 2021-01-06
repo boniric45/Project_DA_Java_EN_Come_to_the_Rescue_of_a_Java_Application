@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public interface ISymptomReader {
 
-    ArrayList<String> readSymptoms();
-
+    ArrayList<String> readSymptoms(String filepath);
 }
 

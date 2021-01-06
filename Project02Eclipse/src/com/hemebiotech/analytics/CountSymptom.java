@@ -1,9 +1,6 @@
 package com.hemebiotech.analytics;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
+import java.util.*;
 
 public class CountSymptom implements ISymptomCount {
 
@@ -16,35 +13,25 @@ public class CountSymptom implements ISymptomCount {
      */
 
     @Override
-    public ArrayList<String> symptomCount(ArrayList<String> resultListSort) { // TODO : methode va retourner une map
+    public HashMap<String, Integer> symptomCount(ArrayList<String> resultListSort) {
 
-        //Create new Objet Collection countlist
-        Collection<String> countList = new HashSet<>(resultListSort); // TODO : remove
-        // TODO : Creation d'une map <String, Integer>
+        // Create map <String, Integer>
+        HashMap<String, Integer> map = new LinkedHashMap<>();// LindedHashMap Keep the insertion order
 
         for (String symptom : resultListSort) {
 
-            // TODO : faire une condition si le symptom est present dans la map
+            // if symptom is present
+            if (map.containsKey(symptom)) {
 
-                // TODO : cas ou le symptome est deja present - on augmente le compteur.
+                //if the symptom is already present - the counter is increased.
+                map.put(symptom, map.get(symptom) + 1);
 
-                // TODO : cas ou le symptome n'est pas present - on ajoute le symptome avec un compteur egal a 1
-
-            // count the number of symptoms
-            int symptomCount = Collections.frequency(resultListSort, symptom); // TODO : remove
-
-            // adds the symptom with its number in the countList collection
-            countList.add(symptom + " : " + symptomCount); // TODO : remove
-            countList.remove(symptom); // TODO : remove
-
+            } else {
+                //case where the symptom is not present - add the symptom with a counter equal to 1
+                map.put(symptom, 1);
+            }
         }
 
-        // ArrayList creation from Collection countList
-        ArrayList<String> countSymptomList = new ArrayList<String>(countList); // TODO : remove
-
-        //sort the list alphabetically
-        Collections.sort(countSymptomList); // TODO : remove
-
-        return countSymptomList;
+        return map;
     }
 }

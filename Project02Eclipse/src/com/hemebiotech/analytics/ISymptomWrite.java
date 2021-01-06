@@ -1,9 +1,9 @@
 package com.hemebiotech.analytics;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface ISymptomWrite {
 
-    void symptomWriteDataFile(ArrayList<String> resultListCount);
+    void symptomWriteDataFile(HashMap<String, Integer> resultListCount, String fileOut);
 
 }

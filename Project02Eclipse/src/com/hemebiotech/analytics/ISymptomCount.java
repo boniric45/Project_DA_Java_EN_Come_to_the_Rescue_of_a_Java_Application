@@ -1,9 +1,10 @@
 package com.hemebiotech.analytics;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface ISymptomCount {
 
-    ArrayList<String> symptomCount(ArrayList<String> resultListSort);
+    HashMap<String, Integer> symptomCount(ArrayList<String> resultListSort);
 
 }

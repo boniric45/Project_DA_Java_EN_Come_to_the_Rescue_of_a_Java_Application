@@ -1,6 +1,7 @@
 package com.hemebiotech.analytics;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AnalyticsCounter {
 
@@ -17,15 +18,14 @@ public class AnalyticsCounter {
 
     public static void main(String[] args) {
 
-        // TODO : optimiser le code en utilisant moins de variable.
 
-        ArrayList<String> resultListDataFile = new ReadSymptomDataFromFile().readSymptoms(); // Read File symptoms.txt return ArrayList
+        ArrayList<String> resultListDataFile = new ReadSymptomDataFromFile().readSymptoms("symptoms.txt"); // Read File symptoms.txt and return ArrayList
 
-        ArrayList<String> resultListSort = new SortSymptom().symptomSort(resultListDataFile); // Read ArrayList resultListDataFile return ArrayList resultListSort
+        resultListDataFile = new SortSymptom().symptomSort(resultListDataFile); // Read ArrayList resultListDataFile return ArrayList
 
-        ArrayList<String> resultListCount = new CountSymptom().symptomCount(resultListSort); // Read ArrayList resultListSort return ArrayList resultListCount
+        HashMap<String, Integer> map = new CountSymptom().symptomCount(resultListDataFile); // Read ArrayList return HashMap
 
-        new WriteSymptomDataFile().symptomWriteDataFile(resultListCount); // Read ArrayList resultListCount and Write file result.out
+        new WriteSymptomDataFile().symptomWriteDataFile(map, "result.out"); // Read Map and Write file result.out
 
     }
 
